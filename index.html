@@ -1,0 +1,657 @@
+<title>Bhargavi Akula</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap">
+
+<style>
+/* Layout: single-column centered with card grid for projects */
+:root {
+  --bg: #f8f7f5;
+  --surface: #ffffff;
+  --border: #e8e4de;
+  --fg: #1a1714;
+  --fg-muted: #6b6560;
+  --accent: #2563eb;
+  --accent-light: #eff3ff;
+  --tag-bg: #f0ede8;
+  --tag-fg: #4a4540;
+  --badge-bg: #fef3c7;
+  --badge-fg: #92400e;
+  --coming-bg: #f0fdf4;
+  --coming-border: #bbf7d0;
+  --coming-fg: #166534;
+
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, monospace;
+
+  --radius: 12px;
+  --radius-sm: 6px;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.05);
+  --shadow-hover: 0 4px 8px rgba(0,0,0,.08), 0 12px 24px rgba(0,0,0,.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111110;
+    --surface: #1c1b19;
+    --border: #2d2c29;
+    --fg: #f0ede8;
+    --fg-muted: #9b948c;
+    --accent: #5b8ef8;
+    --accent-light: #1a2340;
+    --tag-bg: #252420;
+    --tag-fg: #c4bcb4;
+    --badge-bg: #2d1f06;
+    --badge-fg: #fbbf24;
+    --coming-bg: #0a1f0f;
+    --coming-border: #166534;
+    --coming-fg: #4ade80;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111110;
+  --surface: #1c1b19;
+  --border: #2d2c29;
+  --fg: #f0ede8;
+  --fg-muted: #9b948c;
+  --accent: #5b8ef8;
+  --accent-light: #1a2340;
+  --tag-bg: #252420;
+  --tag-fg: #c4bcb4;
+  --badge-bg: #2d1f06;
+  --badge-fg: #fbbf24;
+  --coming-bg: #0a1f0f;
+  --coming-border: #166534;
+  --coming-fg: #4ade80;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Header ── */
+.header {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-block: 56px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.name {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.name span {
+  color: var(--accent);
+}
+
+.tagline {
+  font-size: 15px;
+  color: var(--fg-muted);
+  margin: 0;
+  max-width: 54ch;
+  line-height: 1.6;
+}
+
+.header-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.header-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: border-color .15s, color .15s;
+  text-decoration: none;
+}
+.header-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.header-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ── Section label ── */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin: 0 0 20px;
+}
+
+/* ── About strip ── */
+.about-strip {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.about-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-block: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+.about-stat {
+  padding: 0 24px 0 0;
+  border-right: 1px solid var(--border);
+}
+.about-stat:last-child { border-right: none; padding-left: 24px; padding-right: 0; }
+.about-stat:nth-child(2) { padding-left: 24px; }
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fg);
+  display: block;
+  line-height: 1.2;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--fg-muted);
+  margin-top: 2px;
+  display: block;
+}
+
+@media (max-width: 520px) {
+  .about-inner { grid-template-columns: 1fr; gap: 16px; }
+  .about-stat { border-right: none; border-bottom: 1px solid var(--border); padding: 0 0 16px; }
+  .about-stat:nth-child(2) { padding-left: 0; }
+  .about-stat:last-child { border-bottom: none; padding-left: 0; padding-bottom: 0; }
+}
+
+/* ── Projects section ── */
+.projects-section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-block: 48px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* ── Project card ── */
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow);
+  transition: box-shadow .2s, transform .2s, border-color .2s;
+  position: relative;
+}
+
+.project-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.project-card.coming-soon {
+  border-style: dashed;
+  border-color: var(--coming-border);
+  background: var(--coming-bg);
+}
+
+.project-card.coming-soon:hover {
+  border-color: var(--coming-fg);
+  transform: none;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.project-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+
+.coming-soon .project-icon {
+  background: var(--coming-bg);
+  border: 1px solid var(--coming-border);
+}
+.coming-soon .project-icon svg {
+  color: var(--coming-fg);
+}
+
+.card-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.badge-done {
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+}
+
+.badge-wip {
+  background: var(--coming-bg);
+  color: var(--coming-fg);
+  border: 1px solid var(--coming-border);
+}
+
+.project-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.project-desc {
+  font-size: 14px;
+  color: var(--fg-muted);
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* ── Tech tags ── */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--tag-bg);
+  color: var(--tag-fg);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+/* ── Card links ── */
+.card-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
+.coming-soon .card-links {
+  border-top-color: var(--coming-border);
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: background .15s, color .15s;
+  text-decoration: none;
+}
+
+.card-link-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.card-link-primary:hover {
+  background: #1d4ed8;
+  color: #fff;
+  text-decoration: none;
+}
+
+.card-link-secondary {
+  background: var(--tag-bg);
+  color: var(--tag-fg);
+  border: 1px solid var(--border);
+}
+.card-link-secondary:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
+.card-link svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+/* ── Skills section ── */
+.skills-section {
+  border-top: 1px solid var(--border);
+}
+.skills-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-block: 40px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.skill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-group-name {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid var(--border);
+}
+.footer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-block: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-note {
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card { transition: none; }
+}
+</style>
+
+<!-- ── HEADER ── -->
+<header class="header">
+  <div class="header-top">
+    <div>
+      <h1 class="name">Bhargavi <span>Akula</span></h1>
+      <p class="tagline">Cloud &amp; DevOps Engineer · Re-entering the field with hands-on AWS projects · Based in Adelaide, Australia</p>
+    </div>
+  </div>
+  <div class="header-links">
+    <a class="header-link" href="https://github.com/Bagi0402" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      GitHub
+    </a>
+    <a class="header-link" href="https://www.linkedin.com/in/bhargavi-akula-a2bb25135/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+  </div>
+</header>
+
+<!-- ── ABOUT STRIP ── -->
+<div class="about-strip">
+  <div class="about-inner">
+    <div class="about-stat">
+      <span class="stat-value">5+ yrs</span>
+      <span class="stat-label">Cloud &amp; DevOps experience</span>
+    </div>
+    <div class="about-stat">
+      <span class="stat-value">AWS · IaC</span>
+      <span class="stat-label">Currently learning &amp; building</span>
+    </div>
+    <div class="about-stat">
+      <span class="stat-value">3 projects</span>
+      <span class="stat-label">Built &amp; deployed hands-on</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROJECTS ── -->
+<section class="projects-section">
+  <p class="section-label">Projects</p>
+  <div class="projects-grid">
+
+    <!-- Project 1: Power Calculator -->
+    <article class="project-card">
+      <div class="card-header">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="13 2 13 9 20 9"/><polygon points="2 12 12 2 22 12 22 22 2 22 2 12"/>
+          </svg>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-done">Completed</span>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="project-title">AWS Serverless Power Calculator</h2>
+        <p class="project-desc">A fully serverless web app that computes powers of numbers (e.g. 23⁷ = 3,404,825,447). Built end-to-end with AWS Amplify for hosting, Lambda for compute, API Gateway to route requests, and DynamoDB to log each calculation.</p>
+      </div>
+
+      <div class="tech-tags">
+        <span class="tech-tag">AWS Amplify</span>
+        <span class="tech-tag">Lambda</span>
+        <span class="tech-tag">API Gateway</span>
+        <span class="tech-tag">DynamoDB</span>
+        <span class="tech-tag">IAM</span>
+        <span class="tech-tag">HTML/JS</span>
+      </div>
+
+      <div class="card-links">
+        <a class="card-link card-link-primary" href="https://github.com/Bagi0402/number-power-project" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 2: Shared Grocery List -->
+    <article class="project-card">
+      <div class="card-header">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-done">Completed</span>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="project-title">Shared Grocery List</h2>
+        <p class="project-desc">A collaborative grocery list web app hosted on GitHub Pages. Add, tick off, and manage items in a shared list — no backend required. A lightweight front-end project showcasing practical JavaScript and DOM manipulation.</p>
+      </div>
+
+      <div class="tech-tags">
+        <span class="tech-tag">HTML/CSS</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">GitHub Pages</span>
+        <span class="tech-tag">localStorage</span>
+      </div>
+
+      <div class="card-links">
+        <a class="card-link card-link-primary" href="https://bagi0402.github.io/groceries/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Live Demo
+        </a>
+        <a class="card-link card-link-secondary" href="https://github.com/Bagi0402/Bagi0402.github.io" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          Source
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 3: Percentage Calculator (coming soon) -->
+    <article class="project-card coming-soon">
+      <div class="card-header">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><line x1="5" y1="19" x2="19" y2="5"/><circle cx="12" cy="12" r="1"/>
+          </svg>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-wip">In Progress</span>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="project-title">Percentage Calculator</h2>
+        <p class="project-desc">Static site hosted on S3 behind a CloudFront CDN — infrastructure provisioned entirely with Terraform (IaC). GitHub Actions pipeline automatically syncs the site and invalidates the CDN cache on every push to main.</p>
+      </div>
+
+      <div class="tech-tags">
+        <span class="tech-tag">Terraform</span>
+        <span class="tech-tag">S3</span>
+        <span class="tech-tag">CloudFront</span>
+        <span class="tech-tag">GitHub Actions</span>
+        <span class="tech-tag">OAC</span>
+        <span class="tech-tag">IAM</span>
+      </div>
+
+      <div class="card-links">
+        <span style="font-size:13px; color:var(--coming-fg); padding:6px 0; font-weight:500;">🔧 Deployment in progress — repo coming soon</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section class="skills-section">
+  <div class="skills-inner">
+    <p class="section-label">Tech Stack</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <span class="skill-group-name">Cloud</span>
+        <div class="skill-list">
+          <span class="tech-tag">AWS</span>
+          <span class="tech-tag">Azure</span>
+          <span class="tech-tag">S3</span>
+          <span class="tech-tag">Lambda</span>
+          <span class="tech-tag">CloudFront</span>
+          <span class="tech-tag">DynamoDB</span>
+          <span class="tech-tag">API Gateway</span>
+          <span class="tech-tag">Amplify</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-group-name">IaC &amp; CI/CD</span>
+        <div class="skill-list">
+          <span class="tech-tag">Terraform</span>
+          <span class="tech-tag">GitHub Actions</span>
+          <span class="tech-tag">Jenkins</span>
+          <span class="tech-tag">Docker</span>
+          <span class="tech-tag">Git</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <span class="skill-group-name">Currently Learning</span>
+        <div class="skill-list">
+          <span class="tech-tag">AWS AI Practitioner</span>
+          <span class="tech-tag">SAA-C03</span>
+          <span class="tech-tag">Serverless</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-note">Open to Cloud &amp; DevOps roles in Australia · <a href="https://www.linkedin.com/in/bhargavi-akula-a2bb25135/" target="_blank" rel="noopener">Get in touch on LinkedIn</a></span>
+    <span class="footer-note" style="font-size:12px;">Adelaide, SA · 2026</span>
+  </div>
+</footer>
